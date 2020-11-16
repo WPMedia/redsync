@@ -6,11 +6,11 @@ import (
 	"time"
 
 	"github.com/go-redis/redis/v8"
-	redsyncredis "github.com/go-redsync/redsync/v4/redis"
+	redsyncredis "github.com/wpmedia/redsync/v4/redis"
 )
 
 type pool struct {
-	delegate *redis.Client
+	delegate redis.UniversalClient
 }
 
 func (p *pool) Get(ctx context.Context) (redsyncredis.Conn, error) {
@@ -20,12 +20,12 @@ func (p *pool) Get(ctx context.Context) (redsyncredis.Conn, error) {
 	return &conn{p.delegate, ctx}, nil
 }
 
-func NewPool(delegate *redis.Client) redsyncredis.Pool {
+func NewPool(delegate redis.UniversalClient) redsyncredis.Pool {
 	return &pool{delegate}
 }
 
 type conn struct {
-	delegate *redis.Client
+	delegate redis.UniversalClient
 	ctx      context.Context
 }
 

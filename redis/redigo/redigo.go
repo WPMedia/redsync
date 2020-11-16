@@ -2,11 +2,10 @@ package redigo
 
 import (
 	"context"
+	"github.com/gomodule/redigo/redis"
+	redsyncredis "github.com/wpmedia/redsync/v4/redis"
 	"strings"
 	"time"
-
-	redsyncredis "github.com/go-redsync/redsync/v4/redis"
-	"github.com/gomodule/redigo/redis"
 )
 
 type pool struct {

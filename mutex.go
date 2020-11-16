@@ -6,8 +6,8 @@ import (
 	"encoding/base64"
 	"time"
 
-	"github.com/go-redsync/redsync/v4/redis"
 	"github.com/hashicorp/go-multierror"
+	"github.com/wpmedia/redsync/v4/redis"
 )
 
 // A DelayFunc is used to decide the amount of time to wait between retries.
